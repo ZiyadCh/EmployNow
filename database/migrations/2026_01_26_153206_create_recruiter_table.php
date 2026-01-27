@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('recruiter', function (Blueprint $table) {
             $table->id();
-            $table->string('nom',100);
-            $table->string('prenom',100);
-            $table->foreignId();
+            $table->string('nom', 100);
+            $table->string('prenom', 100);
+            $table->string('email', 100);
+            $table->integer('employee_id');
+            $table->foreign('employee_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
