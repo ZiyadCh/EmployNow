@@ -17,7 +17,7 @@
         </div>
         <label for="">Role:</label>
 
-                                    <select class="mt-4">
+                                    <select name="role" class="mt-4">
                                         <option value="recruteur">recruteur</option>
                                         <option value="chercheur">chercheur</option>
                                     </select>
