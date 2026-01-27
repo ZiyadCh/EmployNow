@@ -53,6 +53,14 @@
                                     </select>
                                     <span>Role:</span>
                                 </label>
+ <label class="floating-label mb-6">
+                            <input type="password"
+                                   name="password"
+                                   placeholder="••••••••"
+                                   class="input input-bordered @error('password') input-error @enderror"
+                                   required>
+                            <span>Password</span>
+                        </label>
 
                         <!-- Password -->
                         <label class="floating-label mb-6">
