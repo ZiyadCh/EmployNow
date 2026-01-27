@@ -45,6 +45,15 @@
                             </div>
                         @enderror
 
+                        <!--Role -->
+                                <label class="floating-label mb-6">
+                                    <<select>
+                                        <option value="recruteur">recruteur</option>
+                                        <option value="chercheur">chercheur</option>
+                                    </select>
+                                    <span>Role:</span>
+                                </label>
+
                         <!-- Password -->
                         <label class="floating-label mb-6">
                             <input type="password"
