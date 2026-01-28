@@ -20,11 +20,11 @@
                             <th>Email</th>
                             <th>Entreprise</th>
                         </tr>
-                        @foreach ($employant as $e)
+                        @foreach ($recruteur as $e)
                         <tr>
                             <td>{{ $e['name'] }}</td>
                             <td>{{ $e['email'] }}</td>
-                            <td>{{ $e['specialite'] }}</td>
+                            <td>{{ $e['entreprise'] }}</td>
                         </tr>
                         @endforeach
                     </table>

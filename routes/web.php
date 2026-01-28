@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChercheurController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RecruiterController;
 use Illuminate\Support\Facades\Route;
@@ -20,16 +21,11 @@ Route::middleware('auth')->group(function () {
 Route::view('test', 'test');
 
 //chercheur route
-Route::get('/chercheur', function () {
-    return view('chercheur');
-})->name('chercheur');
 
-Route::get('recruteur', [RecruiterController::class, 'list'])
-    ->name('recruteur');
+Route::get('chercheur', [ChercheurController::class, 'list'])
+    ->name('chercheur');
+
 //recruteur route
-Route::get('/recruteur', function () {
-    return view('recruteur');
-})->name('recruteur');
 
 Route::get('recruteur', [RecruiterController::class, 'list'])
     ->name('recruteur');

@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class ChercheurController extends Controller
 {
     public function list(){
-        $recruteur = User::select('name','email','specialite')->where('role','recruteur')->get();
-        return view('recruteur',['recruteur'=> $recruteur] );
+        $recruteur = User::select('name','email','entreprise')->where('role','recruteur')->get();
+        return view('chercheur',['recruteur'=> $recruteur] );
     }
 }
