@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RecruiterController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -27,8 +28,7 @@ Route::get('/recruteur', function () {
     return view('recruteur');
 })->name('recruteur');
 
-Route::get('/chercheur', function () {
-    return view('chercheur');
-})->name('chercheur');
+    Route::get('recruteur', [RecruiterController::class, 'list'])
+        ->name('recruteur');
 
 require __DIR__ . '/auth.php';
