@@ -25,6 +25,7 @@
                             <td>{{ $e['name'] }}</td>
                             <td>{{ $e['email'] }}</td>
                             <td>{{ $e['specialite'] }}</td>
+                                <td><a href="{{ route('postuler')}}"></a></td>
                         </tr>
                         @endforeach
                     </table>

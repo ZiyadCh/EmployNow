@@ -20,13 +20,16 @@ Route::middleware('auth')->group(function () {
 });
 Route::view('test', 'test');
 
+//////////////////
 //chercheur route
-
+//////////////////
 Route::get('chercheur', [ChercheurController::class, 'list'])
     ->name('chercheur');
+Route::get('postuler', [ChercheurController::class, 'postuler'])->name('postuler');
 
+//////////////////
 //recruteur route
-
+//////////////////
 Route::get('recruteur', [RecruiterController::class, 'list'])
     ->name('recruteur');
 

@@ -11,4 +11,9 @@ class ChercheurController extends Controller
         $recruteur = User::select('name','email','entreprise')->where('role','recruteur')->get();
         return view('chercheur',['recruteur'=> $recruteur] );
     }
+    public function postuler(){
+        User::create([
+
+        ]);
+    }
 }
