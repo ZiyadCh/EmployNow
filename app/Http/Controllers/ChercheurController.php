@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Acceptes;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -12,8 +13,9 @@ class ChercheurController extends Controller
         return view('chercheur',['recruteur'=> $recruteur] );
     }
     public function postuler(){
-        User::create([
-
+        Acceptes::create([
+            'chercheur_id'=>1,
+            'recruteur_id'=> $recruteur
         ]);
     }
 }
