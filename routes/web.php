@@ -23,12 +23,15 @@ Route::view('test', 'test');
 Route::get('/chercheur', function () {
     return view('chercheur');
 })->name('chercheur');
+
+Route::get('recruteur', [RecruiterController::class, 'list'])
+    ->name('recruteur');
 //recruteur route
 Route::get('/recruteur', function () {
     return view('recruteur');
 })->name('recruteur');
 
-    Route::get('recruteur', [RecruiterController::class, 'list'])
-        ->name('recruteur');
+Route::get('recruteur', [RecruiterController::class, 'list'])
+    ->name('recruteur');
 
 require __DIR__ . '/auth.php';

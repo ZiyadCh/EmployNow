@@ -1,4 +1,35 @@
-    <x-app-layout>
-    page chercheur
+<x-app-layout>
 
-    </x-app-layout>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
+                    {{ __("Trouver Des Recruteurs") }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
+                    <table class="border flex justify-between w-100">
+                        <tr>
+                            <th>Nom</th>
+                            <th>Email</th>
+                            <th>Entreprise</th>
+                        </tr>
+                        @foreach ($employant as $e)
+                        <tr>
+                            <td>{{ $e['name'] }}</td>
+                            <td>{{ $e['email'] }}</td>
+                            <td>{{ $e['specialite'] }}</td>
+                        </tr>
+                        @endforeach
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</x-app-layout>
