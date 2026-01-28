@@ -18,8 +18,17 @@ Route::middleware('auth')->group(function () {
 });
 Route::view('test', 'test');
 
-Route::get('/recruit', function () {
+//chercheur route
+Route::get('/chercheur', function () {
+    return view('chercheur');
+})->name('chercheur');
+//recruteur route
+Route::get('/recruteur', function () {
     return view('recruteur');
-});
+})->name('recruteur');
+
+Route::get('/chercheur', function () {
+    return view('chercheur');
+})->name('chercheur');
 
 require __DIR__ . '/auth.php';
