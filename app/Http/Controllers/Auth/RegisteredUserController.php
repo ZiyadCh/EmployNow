@@ -46,6 +46,16 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        switch ($request->role) {
+            case 'chercheur':
+        return redirect(route('recruteur', absolute: false));
+                break;
+            case 'recruteur':
+        return redirect(route('recruteur', absolute: false));
+                break;
+            default:
+        return redirect(route('recruteur', absolute: false));
+                break;
+        }
     }
 }
