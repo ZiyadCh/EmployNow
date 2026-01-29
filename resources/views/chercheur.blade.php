@@ -1,61 +1,54 @@
 <x-app-layout>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
+                <div class="p-6 text-gray-900 font-bold">
                     {{ __("Trouver Des Recruteurs") }}
                 </div>
             </div>
         </div>
     </div>
 
-<div class="p-6">
-    <div class="">
-        <table class="mx-auto w-full max-w-5xl border border-gray-300 border-collapse rounded-lg">
+    <div class="p-6">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <table class="w-full border border-gray-300 border-collapse rounded-lg shadow-sm">
+                <thead class="bg-gray-100">
+                    <tr>
+                        <th class="border border-gray-300 px-6 py-3 text-left text-sm font-semibold text-gray-700">Nom</th>
+                        <th class="border border-gray-300 px-6 py-3 text-left text-sm font-semibold text-gray-700">Email</th>
+                        <th class="border border-gray-300 px-6 py-3 text-left text-sm font-semibold text-gray-700">Entreprise</th>
+                        <th class="border border-gray-300 px-6 py-3 text-center text-sm font-semibold text-gray-700">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white">
+                    @foreach ($recruteur as $e)
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="border border-gray-300 px-6 py-3 text-sm text-gray-800">{{ $e->name }}</td>
+                        <td class="border border-gray-300 px-6 py-3 text-sm text-gray-800">{{ $e->email }}</td>
+                        <td class="border border-gray-300 px-6 py-3 text-sm text-gray-800">{{ $e->entreprise }}</td>
+                        <td class="border border-gray-300 px-6 py-3">
+                            <div class="flex items-center justify-center gap-2">
+                                <a href="{{ route('ajouter', $e->id) }}" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-xs font-medium">
+                                    Postuler
+                                </a>
 
-            <thead class="bg-gray-100">
-                <tr>
-                    <th class="border border-gray-300 px-6 py-3 text-left text-sm font-semibold text-gray-700">
-                        Nom
-                    </th>
-                    <th class="border border-gray-300 px-6 py-3 text-left text-sm font-semibold text-gray-700">
-                        Email
-                    </th>
-                    <th class="border border-gray-300 px-6 py-3 text-left text-sm font-semibold text-gray-700">
-                        Entreprise
-                    </th>
-                    <th class="border border-gray-300 px-6 py-3 text-center text-sm font-semibold text-gray-700">
-                        Action
-                    </th>
-                </tr>
-            </thead>
+                                <a href="{{ route('edit', $e->id) }}" class="bg-amber-500 hover:bg-amber-600 text-white px-3 py-1 rounded text-xs font-medium">
+                                    Modifier
+                                </a>
 
-            <tbody class="bg-white">
-                @foreach ($recruteur as $e)
-                <tr class="">
-                    <td class="border border-gray-300 px-6 py-3 text-sm text-gray-800">
-                        {{ $e->name }}
-                    </td>
-                    <td class="border border-gray-300 px-6 py-3 text-sm text-gray-800">
-                        {{ $e->email }}
-                    </td>
-                    <td class="border border-gray-300 px-6 py-3 text-sm text-gray-800">
-                        {{ $e->entreprise }}
-                    </td>
-                    <td class="border border-gray-300 px-6 py-3 text-center">
-                        <a
-                            href="{{ route('postuler', ['recruteur'=> $e->id]) }}"
-                            class="inline-block rounded-md bg-blue-600 px-4 py-1.5 text-sm font-medium text-white "
-                        >
-                            Postuler
-                        </a>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-
-        </table>
+                                <form action="{{ route('delete', $e->id) }}" method="POST" onsubmit="return confirm('Supprimer ce recruteur ?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-xs font-medium">
+                                        Supprimer
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
 </x-app-layout>

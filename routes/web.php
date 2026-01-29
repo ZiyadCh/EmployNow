@@ -33,4 +33,14 @@ Route::get('postuler', [ChercheurController::class, 'postuler'])->name('postuler
 Route::get('recruteur', [RecruiterController::class, 'list'])
     ->name('recruteur');
 
+
+////////////////////////////////
+////////////////////////////////
+////////////////////////////////
+//crud
+Route::get('/postuler/{id}', [RecruiterController::class, 'postuler'])->name('ajouter');
+Route::get('/edit/{id}', [RecruiterController::class, 'edit'])->name('edit');
+Route::put('/update/{id}', [RecruiterController::class, 'update'])->name('update');
+Route::delete('/delete/{id}', [RecruiterController::class, 'destroy'])->name('delete');
+
 require __DIR__ . '/auth.php';

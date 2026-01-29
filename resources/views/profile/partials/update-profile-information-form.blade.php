@@ -24,7 +24,7 @@
         </div>
 
         <div>
-            <x-input-label for="speacialite" :value="__('specialite')" />
+            <x-input-label for="speacialite" :value="__('Specialite')" />
             <x-text-input id="specialite" name="specialite" type="text" class="mt-1 block w-full" :value="old('specialite', $user->specialite)" required autofocus autocomplete="specialite" />
             <x-input-error class="mt-2" :messages="$errors->get('specialite')" />
         </div>
