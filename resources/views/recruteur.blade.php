@@ -6,12 +6,17 @@
             <div class="bg-white ">
                 <div class="p-6 text-gray-900">
                     <h2>rechercher</h2><br>
-                    <label for="search">nom:</label>
-                    <input class="border" type="text" name="search-nom" >
-                    <label for="search">specialité:</label>
-                    <input class="border" type="text" name="search-specialite" >
-                            <a href="{{ route('filter') }}" class="inline-block rounded-md bg-blue-600 px-4 py-1.5 text-sm font-medium text-white hover:bg-blue-700 transition">
-                        filtrer</a>
+<form action="{{ route('filter') }}" method="GET">
+        <label for="search-nom">nom:</label>
+        <input class="border" type="text" name="search-nom" >
+
+        <label for="search-specialite">specialité:</label>
+        <input class="border" type="text" name="search-specialite">
+
+        <button type="submit" class="inline-block rounded-md bg-blue-600 px-4 py-1.5 text-sm font-medium text-white hover:bg-blue-700 transition">
+            filtrer
+        </button>
+    </form>
                 </div>
             </div>
         </div>
