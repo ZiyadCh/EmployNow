@@ -28,21 +28,13 @@
                         <td class="border border-gray-300 px-6 py-3 text-sm text-gray-800">{{ $e->entreprise }}</td>
                         <td class="border border-gray-300 px-6 py-3">
                             <div class="flex items-center justify-center gap-2">
-                                <a href="{{ route('ajouter', $e->id) }}" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-xs font-medium">
+                                <a href="" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-xs font-medium">
                                     Postuler
                                 </a>
 
-                                <a href="{{ route('edit', $e->id) }}" class="bg-amber-500 hover:bg-amber-600 text-white px-3 py-1 rounded text-xs font-medium">
-                                    Modifier
-                                </a>
 
-                                <form action="{{ route('delete', $e->id) }}" method="POST" onsubmit="return confirm('Supprimer ce recruteur ?')">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-xs font-medium">
-                                        Supprimer
-                                    </button>
-                                </form>
+
+
                             </div>
                         </td>
                     </tr>

@@ -25,8 +25,13 @@
 
         <div>
             <x-input-label for="speacialite" :value="__('Specialité')" />
-            <x-text-input id="specialite" name="specialite" type="text" class="mt-1 block w-full" :value="old('specialite', $user->specialite)" required autofocus autocomplete="specialite" />
+            <x-text-input id="specialite" name="specialite" type="text" class="mt-1 block w-full" :value="old('specialite', $user->specialite)" required />
             <x-input-error class="mt-2" :messages="$errors->get('specialite')" />
+        </div>
+        <div>
+            <x-input-label for="pfp" :value="__('Image')" />
+            <x-text-input id="pfp" name="pfp" type="file" class="mt-1 block w-full" :value="old('pfp', $user->pfp)" required />
+            <x-input-error class="mt-2" :messages="$errors->get('pfp')" />
         </div>
 
         <div>
