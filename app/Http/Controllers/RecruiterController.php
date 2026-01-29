@@ -30,4 +30,9 @@ class RecruiterController extends Controller
         User::destroy($id);
         return back();
     }
+    // 5. filter
+    public function filter(){
+        $employant = User::select('name','email','specialite')->where('role','chercheur')->where('specialite','!=',null)->where('name','Like','%y%')->get();
+        return view('recruteur',['employant'=> $employant] );
+    }
 }
