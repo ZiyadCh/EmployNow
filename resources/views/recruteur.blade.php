@@ -60,7 +60,7 @@
                             href="{{ route('voir', $e->id) }}"
                             class="inline-block rounded-md bg-blue-600 px-4 py-1.5 text-sm font-medium text-white "
                         >
-                            Profile
+                                    Profile
                         </a>
                     </td>
                 </tr>

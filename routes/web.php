@@ -31,7 +31,7 @@ Route::get('chercheur', [ChercheurController::class, 'list'])
 //////////////////
 Route::get('recruteur', [RecruiterController::class, 'list'])
     ->name('recruteur');
-Route::get('voir', [ChercheurController::class, 'voir'])->name('voir');
+Route::get('/voir/{id}', [RecruiterController::class, 'voir'])->name('voir');
 
 
 ////////////////////////////////

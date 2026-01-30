@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class RecruiterController extends Controller
 {
     public function list(){
-        $employant = User::select('name','email','specialite')->where('role','chercheur')->where('specialite','!=',null)->get();
+        $employant = User::select('id','name','email','specialite')->where('role','chercheur')->where('specialite','!=',null)->get();
         return view('recruteur',['employant'=> $employant] );
     }
 
@@ -32,7 +32,12 @@ class RecruiterController extends Controller
     }
     // 5. filter
     public function filter(Request $request){
-        $employant = User::select('name','email','specialite')->where('role','chercheur')->where('specialite','!=',null)->where('name','Like','%'.$request->input('search-nom').'%')->where('specialite','Like','%'.$request->input('search-specialite').'%')->get();
+        $employant = User::select('id','name','email','specialite')->where('role','chercheur')->where('specialite','!=',null)->where('name','Like','%'.$request->input('search-nom').'%')->where('specialite','Like','%'.$request->input('search-specialite').'%')->get();
         return view('recruteur',['employant'=> $employant] );
+    }
+    //profile
+    public function voir($id) {
+         $employant = User::findOrFail($id);
+        return view('profile-view', compact('employant'));
     }
 }
