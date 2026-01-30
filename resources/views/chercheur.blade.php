@@ -25,7 +25,7 @@
                     <tr class="">
                         <td class="border border-gray-300 px-6 py-3 text-sm text-gray-800">{{ $e->name }}</td>
                         <td class="border border-gray-300 px-6 py-3 text-sm text-gray-800">{{ $e->email }}</td>
-                        <td class="border border-gray-300 px-6 py-3 text-sm text-gray-800">{{ $e->entreprise }}</td>
+                        <td class="border border-gray-300 px-6 py-3 text-sm text-gray-800">{{ $e->role }}</td>
                         <td class="border border-gray-300 px-6 py-3">
                             <div class="flex items-center justify-center gap-2">
                                 <a href="" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-xs font-medium">
