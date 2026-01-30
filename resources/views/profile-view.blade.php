@@ -26,7 +26,7 @@
                                 Image
                             </span>
                             <span class="rounded-lg border">
-                                <img src="{{$employant->pfp }}" alt="pfp">
+                                <img src="{{ asset('storage/' . $employant->pfp) }}" alt="pfp">
                             </span>
                         </div>
                         <div>
