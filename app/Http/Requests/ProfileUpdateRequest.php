@@ -26,6 +26,7 @@ class ProfileUpdateRequest extends FormRequest
                 Rule::unique(User::class)->ignore($this->user()->id),
             ],
             'specialite' => ['nullable','string','max:255'],
+            'pfp' => ['nullable','image'],
         ];
     }
 }
