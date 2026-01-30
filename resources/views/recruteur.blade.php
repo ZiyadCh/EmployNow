@@ -57,10 +57,10 @@
                     </td>
                     <td class="border border-gray-300 px-6 py-3 text-center">
                         <a
-                            href="{{ route('postuler', $e->id) }}"
-                            class="inline-block rounded-md bg-blue-600 px-4 py-1.5 text-sm font-medium text-white hover:bg-blue-700 transition"
+                            href="{{ route('voir', $e->id) }}"
+                            class="inline-block rounded-md bg-blue-600 px-4 py-1.5 text-sm font-medium text-white "
                         >
-                            recruter
+                            Profile
                         </a>
                     </td>
                 </tr>
