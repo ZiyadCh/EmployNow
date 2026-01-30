@@ -12,32 +12,32 @@ class RecruiterController extends Controller
         return view('recruteur',['employant'=> $employant] );
     }
 
-// 2. Show edit form
+// Show edit form
     public function edit($id) {
         $recruteur = User::findOrFail($id);
         return view('edit', compact('recruteur'));
     }
 
-    // 3. Update the data
+    //Update the data
     public function update(Request $request, $id) {
         $recruteur = User::findOrFail($id);
         $recruteur->update($request->all());
         return redirect()->route('chercheur');
     }
 
-    // 4. Delete
+    //  Delete
     public function destroy($id) {
         User::destroy($id);
         return back();
     }
-    // 5. filter
+    //filter
     public function filter(Request $request){
         $employant = User::select('id','name','email','specialite')->where('role','chercheur')->where('specialite','!=',null)->where('name','Like','%'.$request->input('search-nom').'%')->where('specialite','Like','%'.$request->input('search-specialite').'%')->get();
         return view('recruteur',['employant'=> $employant] );
     }
     //profile
     public function voir($id) {
-         $employant = User::findOrFail($id);
+         $employant = User::find($id);
         return view('profile-view', compact('employant'));
     }
 }
