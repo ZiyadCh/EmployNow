@@ -42,6 +42,6 @@ Route::get('/postuler/{id}', [RecruiterController::class, 'postuler'])->name('aj
 Route::get('/edit/{id}', [RecruiterController::class, 'edit'])->name('edit');
 Route::put('/update/{id}', [RecruiterController::class, 'update'])->name('update');
 Route::delete('/delete/{id}', [RecruiterController::class, 'destroy'])->name('delete');
-Route::get('filter', [RecruiterController::class,'filter'])->name('filter');
+Route::get('filter', [RecruiterController::class, 'filter'])->name('filter');
 
 require __DIR__ . '/auth.php';

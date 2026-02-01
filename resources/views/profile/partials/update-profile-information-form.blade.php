@@ -1,7 +1,7 @@
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Profile Information') }}
+            {{ __('Profile & CV Information') }}
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
@@ -22,19 +22,7 @@
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
-
-        <div>
-            <x-input-label for="speacialite" :value="__('Specialité')" />
-            <x-text-input id="specialite" name="specialite" type="text" class="mt-1 block w-full" :value="old('specialite', $user->specialite)" required />
-            <x-input-error class="mt-2" :messages="$errors->get('specialite')" />
-        </div>
-        <div>
-            <x-input-label for="pfp" :value="__('Image')" />
-            <x-text-input id="pfp" name="pfp" type="file" class="mt-1 block w-full" :value="old('pfp', $user->pfp)" required />
-            <x-input-error class="mt-2" :messages="$errors->get('pfp')" />
-        </div>
-
-        <div>
+ <div>
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
@@ -57,6 +45,63 @@
                 </div>
             @endif
         </div>
+<div>
+            <x-input-label for="pfp" :value="__('Image')" />
+            <x-text-input id="pfp" name="pfp" type="file" class="mt-1 block w-full" :value="old('pfp', $user->pfp)" required />
+            <x-input-error class="mt-2" :messages="$errors->get('pfp')" />
+        </div>
+        <div>
+            <x-input-label for="speacialite" :value="__('Specialité')" />
+            <x-text-input placeholder="Specialité" id="specialite" name="specialite" type="text" class="mt-1 block w-full" :value="old('specialite', $user->specialite)" required />
+            <x-input-error class="mt-2" :messages="$errors->get('specialite')" />
+        </div>
+
+
+
+
+        {{-- FORMATION --}}
+        <div>
+            <x-input-label for="education" value="Formation" />
+            <textarea
+                id="education"
+                name="education"
+                rows="4"
+                class="mt-1 block w-full rounded-md border-gray-300"
+                placeholder=""
+                required
+            >{{ old('education', $user->education) }}</textarea>
+            <x-input-error :messages="$errors->get('education')" class="mt-2" />
+        </div>
+
+        {{-- EXPÉRIENCES --}}
+        <div>
+            <x-input-label for="experience" value="Expériences professionnelles" />
+            <textarea
+                id="experience"
+                name="experience"
+                rows="5"
+                class="mt-1 block w-full rounded-md border-gray-300"
+                placeholder=""
+                required
+            >{{ old('experience', $user->experience) }}</textarea>
+            <x-input-error :messages="$errors->get('experience')" class="mt-2" />
+        </div>
+
+        {{-- COMPÉTENCES --}}
+        <div>
+            <x-input-label for="skills" value="Compétences" />
+            <x-text-input
+                id="skills"
+                name="skills"
+                type="text"
+                class="mt-1 block w-full"
+                placeholder=""
+                :value="old('skills', $user->skills)"
+                required
+            />
+            <x-input-error :messages="$errors->get('skills')" class="mt-2" />
+        </div>
+
 
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
