@@ -12,11 +12,7 @@ new class extends Component
     public $experiences = [];
     public $competences = [];
 
-
-
-    public function save()
-    {
-        // for dynamic adding things for all 3
+ // for dynamic adding things for all 3
         //formation
         public function addFormation(){
             $this->formations[] = ['etablissement' => '', 'diplome' => '' , 'date_obtenu' => ''];
@@ -38,6 +34,10 @@ new class extends Component
         public function removeCompetence(){
             unset($this->competences[$i]);
         }
+
+
+    public function save()
+    {
     }
 };
 ?>
