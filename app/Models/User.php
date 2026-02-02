@@ -12,7 +12,7 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
     public function profile() {
-        return $this->hasOne(Profile::class);
+        return $this->hasOne(Profile::class,'user_id');
     }
 
     protected $fillable = [
