@@ -56,51 +56,8 @@
             <x-input-error class="mt-2" :messages="$errors->get('specialite')" />
         </div>
 
-
-
-
-        {{-- FORMATION --}}
-        <div>
-            <x-input-label for="education" value="Formation" />
-            <textarea
-                id="education"
-                name="education"
-                rows="4"
-                class="mt-1 block w-full rounded-md border-gray-300"
-                placeholder=""
-                required
-            >{{ old('education', $user->education) }}</textarea>
-            <x-input-error :messages="$errors->get('education')" class="mt-2" />
-        </div>
-
-        {{-- EXPÉRIENCES --}}
-        <div>
-            <x-input-label for="experience" value="Expériences professionnelles" />
-            <textarea
-                id="experience"
-                name="experience"
-                rows="5"
-                class="mt-1 block w-full rounded-md border-gray-300"
-                placeholder=""
-                required
-            >{{ old('experience', $user->experience) }}</textarea>
-            <x-input-error :messages="$errors->get('experience')" class="mt-2" />
-        </div>
-
-        {{-- COMPÉTENCES --}}
-        <div>
-            <x-input-label for="skills" value="Compétences" />
-            <x-text-input
-                id="skills"
-                name="skills"
-                type="text"
-                class="mt-1 block w-full"
-                placeholder=""
-                :value="old('skills', $user->skills)"
-                required
-            />
-            <x-input-error :messages="$errors->get('skills')" class="mt-2" />
-        </div>
+        <!-- livewire cv form -->
+        @livewire('cv-form')
 
 
         <div class="flex items-center gap-4">
