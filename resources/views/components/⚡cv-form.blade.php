@@ -5,19 +5,28 @@ use App\Models\Formation;
 use App\Models\Experience;
 use App\Models\Competence;
 
-new class extends Component
+ new class extends Component
 {
-    private $profile_id;
+    public $profile_id;
     public $formations = [];
     public $experiences = [];
     public $competences = [];
+
+    public function mount($profile_id)
+    {
+        $this->profile_id = $profile_id;
+        $this->formations = Formation::where('profile_id', $profile_id)->get()->toArray();
+        $this->experiences = Experience::where('profile_id', $profile_id)->get()->toArray();
+        $this->competences = Competence::where('profile_id', $profile_id)->get()->toArray();
+    }
 
     public function addFormation()
     {
         $this->formations[] = ['etablissement' => '', 'diplome' => '', 'date_obtenu' => ''];
     }
-    public function removeFormation($i)
+    public function removeFormation($id, $i)
     {
+        if ($id) Formation::where('id', $id)->delete();
         unset($this->formations[$i]);
     }
 
@@ -25,46 +34,71 @@ new class extends Component
     {
         $this->experiences[] = ['entreprise' => '', 'poste' => '', 'date_debut' => '', 'date_fin' => ''];
     }
-    public function removeExperience($i)
+    public function removeExperience($id, $i)
     {
+        if ($id) Experience::where('id', $id)->delete();
         unset($this->experiences[$i]);
     }
 
     public function addCompetence()
     {
-        $this->competences[] = ['title' => ''];
+        $this->competences[] = ['titre' => ''];
     }
-    public function removeCompetence($i)
+    public function removeCompetence($id, $i)
     {
+        if ($id) Competence::where('id', $id)->delete();
         unset($this->competences[$i]);
     }
 
     public function save()
     {
         foreach ($this->formations as $f) {
-            Formation::create([
-                'profile_id' => $this->profile_id,
-                'etablissement' => $f['etablissement'],
-                'diplome' => $f['diplome'],
-                'date_obtenu' => $f['date_obtenu']
-            ]);
+            if (isset($f['id'])) {
+                Formation::where('id', $f['id'])->update([
+                    'etablissement' => $f['etablissement'],
+                    'diplome' => $f['diplome'],
+                    'date_obtenu' => $f['date_obtenu'],
+                ]);
+            } else {
+                Formation::create([
+                    'profile_id' => $this->profile_id,
+                    'etablissement' => $f['etablissement'],
+                    'diplome' => $f['diplome'],
+                    'date_obtenu' => $f['date_obtenu'],
+                ]);
+            }
         }
 
         foreach ($this->experiences as $e) {
-            Experience::create([
-                'profile_id' => $this->profile_id,
-                'entreprise' => $e['entreprise'],
-                'poste' => $e['poste'],
-                'date_debut' => $e['date_debut'],
-                'date_fin' => $e['date_fin']
-            ]);
+            if (isset($e['id'])) {
+                Experience::where('id', $e['id'])->update([
+                    'entreprise' => $e['entreprise'],
+                    'poste' => $e['poste'],
+                    'date_debut' => $e['date_debut'],
+                    'date_fin' => $e['date_fin']
+                ]);
+            } else {
+                Experience::create([
+                    'profile_id' => $this->profile_id,
+                    'entreprise' => $e['entreprise'],
+                    'poste' => $e['poste'],
+                    'date_debut' => $e['date_debut'],
+                    'date_fin' => $e['date_fin']
+                ]);
+            }
         }
 
         foreach ($this->competences as $c) {
-            Competence::create([
-                'profile_id' => $this->profile_id,
-                'title' => $c['title']
-            ]);
+            if (isset($c['id'])) {
+                Competence::where('id', $c['id'])->update([
+                    'titre' => $c['titre']
+                ]);
+            } else {
+                Competence::create([
+                    'profile_id' => $this->profile_id,
+                    'titre' => $c['titre']
+                ]);
+            }
         }
     }
 };
@@ -80,8 +114,8 @@ new class extends Component
             <div class="flex items-center gap-2">
                 <x-text-input class="flex-1" placeholder="Établissement" wire:model="formations.{{ $i }}.etablissement" />
                 <x-text-input class="flex-1" placeholder="Diplome" wire:model="formations.{{ $i }}.diplome" />
-                <input type="date" class="flex-1" placeholder="Date d'aquisition de diplome" wire:model="formations.{{ $i }}.date_obtenu" />
-                <button type="button" wire:click="removeFormation({{ $i }})" class="px-3 py-2 border rounded text-red-600 font-bold">−</button>
+                <x-text-input type="date" class="flex-1" placeholder="Date d'aquisition de diplome" wire:model="formations.{{ $i }}.date_obtenu" />
+                <button type="button" wire:click="removeFormation({{ $f['id'] ?? 'null' }},{{ $i }})" class="px-3 py-2 border rounded text-red-600 font-bold">−</button>
             </div>
             @endforeach
 
@@ -97,7 +131,7 @@ new class extends Component
                 <x-text-input class="flex-1" placeholder="Poste" wire:model="experiences.{{ $i }}.poste" />
                 <x-text-input type="date" class="w-40" wire:model="experiences.{{ $i }}.date_debut" />
                 <x-text-input type="date" class="w-40" wire:model="experiences.{{ $i }}.date_fin" />
-                <button type="button" wire:click="removeExperience({{ $i }})" class="px-3 py-2 border rounded text-red-600 font-bold">−</button>
+                <button type="button" wire:click="removeExperience({{ $e['id'] ?? 'null'}},{{$i}} )" class="px-3 py-2 border rounded text-red-600 font-bold">−</button>
             </div>
             @endforeach
 
@@ -109,15 +143,15 @@ new class extends Component
 
             @foreach ($competences as $i => $c)
             <div class="flex items-center gap-2">
-                <x-text-input class="flex-1" placeholder="Compétence" wire:model="competences.{{ $i }}.nom" />
-                <button type="button" wire:click="removeCompetence({{ $i }})" class="px-3 py-2 border rounded text-red-600 font-bold">−</button>
+                <x-text-input class="flex-1" placeholder="Compétence" wire:model="competences.{{ $i }}.titre" />
+                <button type="button" wire:click="removeCompetence({{ $c['id'] ?? 'null'}}, {{$i}} )" class="px-3 py-2 border rounded text-red-600 font-bold">−</button>
             </div>
             @endforeach
 
             <button type="button" wire:click="addCompetence" class="text-blue-600 font-bold text-blue-600 border bg-blue-500 font-bold py-2 px-4 rounded ">+</button>
         </div>
 
-        <x-primary-button class="w-full ">Enregistrer CV</x-primary-button>
+        <x-primary-button class="">Enregistrer CV</x-primary-button>
 
     </form>
 </div>

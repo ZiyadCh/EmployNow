@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -41,6 +42,7 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+        $user->profile()->create();
 
         event(new Registered($user));
 
@@ -48,13 +50,13 @@ class RegisteredUserController extends Controller
 
         switch ($request->role) {
             case 'chercheur':
-        return redirect(route('recruteur', absolute: false));
+        return redirect(route('chercheur', absolute: false));
                 break;
             case 'recruteur':
         return redirect(route('recruteur', absolute: false));
                 break;
             default:
-        return redirect(route('recruteur', absolute: false));
+        return redirect(route('login', absolute: false));
                 break;
         }
     }
