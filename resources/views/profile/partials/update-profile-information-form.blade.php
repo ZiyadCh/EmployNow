@@ -56,10 +56,6 @@
             <x-input-error class="mt-2" :messages="$errors->get('specialite')" />
         </div>
 
-        <!-- livewire cv form -->
-        @livewire('cv-form')
-
-
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 

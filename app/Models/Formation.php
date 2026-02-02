@@ -4,15 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Experience extends Model
+class Formations extends Model
 {
-    protected $fillables = [
+    protected  $fillables = [
         'id',
         'profile_id',
-        'entreprise',
-        'poste',
-        'date_debut',
-        'date_fin',
+        'etablissement',
+        'diplome',
+        'date_obtenu',
     ];
     public function profile() {
         return $this->belongsTo(Profile::class);

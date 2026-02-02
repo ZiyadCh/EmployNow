@@ -7,4 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Competence extends Model
 {
     //
+    public function profile() {
+        return $this->belongsTo(Profile::class);
+    }
 }
