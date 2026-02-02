@@ -17,21 +17,21 @@ new class extends Component
         public function addFormation(){
             $this->formations[] = ['etablissement' => '', 'diplome' => '' , 'date_obtenu' => ''];
         }
-        public function removeFormation(){
+        public function removeFormation($i){
             unset($this->formations[$i]);
         }
         //experiecne
         public function addExperience(){
-            $this->experiences[] = ['entreprise' => '', 'poste' => '' , 'date_deput' => '','date_fin'=> ''];
+            $this->experiences[] = ['entreprise' => '', 'poste' => '' , 'date_debut' => '','date_fin'=> ''];
         }
-        public function removeExperience(){
+        public function removeExperience($i){
             unset($this->experiences[$i]);
         }
         //competence
         public function addCompetence(){
             $this->competences[] = ['title' => ''];
         }
-        public function removeCompetence(){
+        public function removeCompetence($i){
             unset($this->competences[$i]);
         }
 
@@ -51,12 +51,13 @@ new class extends Component
         @foreach ($formations as $i => $f)
         <div class="flex items-center gap-2">
             <x-text-input class="flex-1" placeholder="Établissement" wire:model="formations.{{ $i }}.etablissement" />
-            <x-text-input class="flex-1" placeholder="Diplôme" wire:model="formations.{{ $i }}.diplome" />
+            <x-text-input class="flex-1" placeholder="Diplome" wire:model="formations.{{ $i }}.diplome" />
+            <x-text-input class="flex-1" placeholder="Date d'aquisition de diplome" wire:model="formations.{{ $i }}.date_obtenu" />
             <button type="button" wire:click="removeFormation({{ $i }})" class="px-3 py-2 border rounded text-red-600 font-bold">−</button>
         </div>
         @endforeach
 
-        <button type="button" wire:click="addFormation" class="text-blue-600 font-bold">+</button>
+        <button type="button" wire:click="addFormation" class="text-blue-600 border bg-blue-500 font-bold py-2 px-4 rounded ">+</button>
     </div>
 
     <div class="space-y-3">
@@ -72,7 +73,7 @@ new class extends Component
         </div>
         @endforeach
 
-        <button type="button" wire:click="addExperience" class="text-blue-600 font-bold">+</button>
+        <button type="button" wire:click="addExperience" class=" text-blue-600 border bg-blue-500 font-bold py-2 px-4 rounded text-blue-600 font-bold">+</button>
     </div>
 
     <div class="space-y-3">
@@ -81,15 +82,14 @@ new class extends Component
         @foreach ($competences as $i => $c)
         <div class="flex items-center gap-2">
             <x-text-input class="flex-1" placeholder="Compétence" wire:model="competences.{{ $i }}.nom" />
-            <x-text-input class="w-40" placeholder="Niveau" wire:model="competences.{{ $i }}.niveau" />
             <button type="button" wire:click="removeCompetence({{ $i }})" class="px-3 py-2 border rounded text-red-600 font-bold">−</button>
         </div>
         @endforeach
 
-        <button type="button" wire:click="addCompetence" class="text-blue-600 font-bold">+</button>
+        <button type="button" wire:click="addCompetence" class="text-blue-600 font-bold text-blue-600 border bg-blue-500 font-bold py-2 px-4 rounded ">+</button>
     </div>
 
-    <x-primary-button class="w-full">Enregistrer CV</x-primary-button>
+    <x-primary-button class="w-full ">Enregistrer CV</x-primary-button>
 
 </form>
 </div>
