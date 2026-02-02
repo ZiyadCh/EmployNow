@@ -2,24 +2,13 @@
 
 use Livewire\Component;
 
-class CV extends Component
+new class extends Component
 {
   public $education = '';
     public $experience = '';
     public $skills = '';
 
-    public function mount()
-    {
-        // Optional: prefill if profile exists
-        $profile = auth()->user()->profile;
-        if ($profile) {
-            $this->education = $profile->formations ?? '';
-            $this->experience = $profile->experiences ?? '';
-            $this->skills = $profile->competences ?? '';
-        }
-    }
-
-    public function save()
+       public function save()
     {
         $this->validate([
             'education' => 'required|string',
@@ -27,7 +16,7 @@ class CV extends Component
             'skills' => 'required|string|max:255',
         ]);
 
-        Profile::updateOrCreate(
+        Profile::create(
             ['user_id' => auth()->id()],
             [
                 'formations' => $this->education,
@@ -42,47 +31,51 @@ class CV extends Component
 
 <div>
     {{-- Smile, breathe, and go slowly. - Thich Nhat Hanh --}}
-        {{-- FORMATION --}}
-        <div>
-            <x-input-label for="education" value="Formation" />
-            <textarea
-                id="education"
-                name="education"
-                rows="4"
-                class="mt-1 block w-full rounded-md border-gray-300"
-                placeholder=""
-                required
-            ></textarea>
-            <x-input-error :messages="$errors->get('education')" class="mt-2" />
+
+<div class="space-y-6">
+
+    <div>
+        <x-input-label value="Titre du profil" />
+        <x-text-input class="w-full" placeholder="Titre du profil" />
+    </div>
+
+    <h3 class="font-bold mt-4">Formations</h3>
+    <div class="space-y-2" id="formations-container">
+        <div class="flex space-x-2 items-center">
+            <x-text-input placeholder="École" class="flex-1" />
+            <x-text-input placeholder="Diplôme" class="flex-1" />
+            <x-text-input placeholder="Année début" class="w-24" />
+            <x-text-input placeholder="Année fin" class="w-24" />
+            <button type="button" class="text-red-600 font-bold p-4  border">-</button>
         </div>
+    </div>
+    <button type="button" class="text-blue-600 font-bold mt-2">+</button>
 
-        {{-- EXPÉRIENCES --}}
-        <div>
-            <x-input-label for="experience" value="Expériences professionnelles" />
-            <textarea
-                id="experience"
-                name="experience"
-                rows="5"
-                class="mt-1 block w-full rounded-md border-gray-300"
-                placeholder=""
-                required
-            ></textarea>
-            <x-input-error :messages="$errors->get('experience')" class="mt-2" />
+    <h3 class="font-bold mt-4">Expériences professionnelles</h3>
+    <div class="space-y-2" id="experiences-container">
+        <div class="flex space-x-2 items-center">
+            <x-text-input placeholder="Entreprise" class="flex-1" />
+            <x-text-input placeholder="Poste" class="flex-1" />
+            <x-text-input placeholder="Année début" class="w-24" />
+            <x-text-input placeholder="Année fin" class="w-24" />
+            <button type="button" class="text-red-600 p-4 font-bold">-</button>
         </div>
+    </div>
+    <button type="button" class="text-blue-600 font-bold mt-2">+</button>
 
-        {{-- COMPÉTENCES --}}
-        <div>
-            <x-input-label for="skills" value="Compétences" />
-            <x-text-input
-                id="skills"
-                name="skills"
-                type="text"
-                class="mt-1 block w-full"
-                placeholder=""
-                required
-            />
-            <x-input-error :messages="$errors->get('skills')" class="mt-2" />
+    <h3 class="font-bold mt-4">Compétences</h3>
+    <div class="space-y-2" id="skills-container">
+        <div class="flex space-x-2 items-center">
+            <x-text-input placeholder="Compétence" class="flex-1" />
+            <x-text-input placeholder="Niveau (optionnel)" class="w-32" />
+            <button type="button" class="text-red-600 font-bold p-4">-</button>
         </div>
+    </div>
+    <button type="button" class="text-blue-600 font-bold mt-2">+</button>
 
+    <div class="mt-6">
+        <x-primary-button class="w-full">Enregistrer le profil</x-primary-button>
+    </div>
 
+</div>
 </div>
