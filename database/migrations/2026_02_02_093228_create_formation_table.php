@@ -16,8 +16,7 @@ return new class extends Migration
             $table->foreignId('profile_id')->constrained()->cascadeOnDelete();
             $table->string('etablissement');
             $table->string('diplome');
-            $table->date('date_debut');
-            $table->date('date_fin');
+            $table->date('date_obtenu');
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('formation');
+        Schema::dropIfExists('formations');
     }
 };
