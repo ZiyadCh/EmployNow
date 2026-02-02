@@ -21,7 +21,7 @@
                     </div>
 
                     <div class="border-t border-gray-200 pt-4 space-y-3">
-<div>
+                     <div>
                             <span class="block text-sm font-medium text-gray-600">
                                 Image
                             </span>
