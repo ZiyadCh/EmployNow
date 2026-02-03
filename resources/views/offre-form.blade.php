@@ -1,59 +1,62 @@
-
 <x-app-layout>
-    <div class="flex justify-center items-center  py-10 ">
-        <div class="bg-white rounded-2xl shadow-xl p-8  max-w-md">
-            <div class="mb-6 text-center">
-                <h1 class="text-3xl font-bold text-gray-800">Nouveau offre d'emploi</h1>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            Nouveau offre d'emploi
+        </h2>
+    </x-slot>
+
+    <div class="py-12">
+        <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
+
+                    <form action="" method="POST" class="space-y-6">
+                        @csrf
+
+                        <div>
+                            <label for="">Entreprise</label>
+                            <x-input-label for="entreprise"  />
+                            <x-text-input id="entreprise" class="block mt-1 w-full" type="text" name="entreprise" required />
+                        </div>
+                          <div>
+                            <label>Titre</label>
+                            <x-text-input id="titre" class="block mt-1 w-full" type="text" name="titre" placeholder="" required />
+                        </div>
+
+                        <div>
+                            <x-input-label for="type_contrat" :value="__('Type de contrat')" />
+                            <select id="type_contrat" name="type_contrat" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+                                <option value="CDI">CDI</option>
+                                <option value="CDD">CDD</option>
+                                <option value="Full-time">Full-time </option>
+                                <option value="Stage">Stage</option>
+                                <option value="Freelance">Freelance</option>
+                            </select>
+                        </div>
+
+
+                        <div>
+                            <x-input-label for="description" :value="__('Description du poste')" />
+                            <textarea id="description" name="description" rows="4" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required></textarea>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg border-2 border-dashed border-gray-200">
+                            <x-input-label for="image_poste" :value="__('Image de l\'offre ')" />
+                            <input id="image_poste" name="image_poste" type="file" class=""
+                                required />
+                        </div>
+
+                        <div class="flex items-center justify-end mt-4">
+                            <x-primary-button class="ml-4">
+                                {{ __('Enregistrer l\'offre') }}
+                            </x-primary-button>
+                        </div>
+
+                    </form>
+                </div>
             </div>
-
-            <form class="space-y-5">
-                <div>
-                    <label for="company" class="block text-gray-700 font-semibold mb-1">Entreprise</label>
-                    <input type="text" id="company" name="company" required
-                           class=" border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
-                </div>
-
-                <!-- Type de contrat -->
-                <div>
-                    <label for="contract_type" class="block text-gray-700 font-semibold mb-1">Type de contrat</label>
-                    <select id="contract_type" name="contract_type" required
-                            class=" border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
-                        <option value="">-- Choisir --</option>
-                        <option>CDI</option>
-                        <option>CDD</option>
-                        <option>Full-time</option>
-                        <option>Stage</option>
-                        <option>Freelance</option>
-                    </select>
-                </div>
-
-                <!-- Titre -->
-                <div>
-                    <label for="title" class="block text-gray-700 font-semibold mb-1">Titre du poste</label>
-                    <input type="text" id="title" name="title" required
-                           class=" border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
-                </div>
-
-                <!-- Description -->
-                <div>
-                    <label for="description" class="block text-gray-700 font-semibold mb-1">Description</label>
-                    <textarea id="description" name="description" rows="4" required
-                              class=" border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
-                </div>
-
-                <!-- Image -->
-                <div>
-                    <label for="image" class="block text-gray-700 font-semibold mb-1">Image du poste</label>
-                    <input type="file" id="image" name="image" accept="image/*" required
-                           class=" border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
-                </div>
-
-                <!-- Bouton -->
-                <button type="submit"
-                        class=" bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition">
-                    Publier l’offre
-                </button>
-            </form>
         </div>
     </div>
 </x-app-layout>
+
+

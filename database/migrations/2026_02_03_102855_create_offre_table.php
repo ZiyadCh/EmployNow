@@ -11,8 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('offre', function (Blueprint $table) {
+        Schema::create('offres', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('recruteur_id')->references('id')->on('users');
+            $table->string('titre');
+            $table->string('type');
+            $table->string('entreprise');
+            $table->text('description');
+            $table->string('image');
             $table->timestamps();
         });
     }

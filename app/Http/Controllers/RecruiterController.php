@@ -32,7 +32,7 @@ class RecruiterController extends Controller
     }
     //filter
     public function filter(Request $request){
-        $employant = User::select('id','name','email','specialite')->where('role','chercheur')->where('specialite','!=',null)->where('name','Like','%'.$request->input('search-nom').'%')->where('specialite','Like','%'.$request->input('search-specialite').'%')->get();
+        $employant = User::select('id','name','email','specialite')->where('role','chercheur')->where('name','Like','%'.$request->input('search-nom').'%')->where('specialite','Like','%'.$request->input('search-specialite').'%')->get();
         return view('recruteur',['employant'=> $employant] );
     }
     //profile
