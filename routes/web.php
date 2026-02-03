@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ChercheurController;
+use App\Http\Controllers\OfferController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RecruiterController;
 use Illuminate\Support\Facades\Route;
@@ -19,23 +20,15 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-//////////////////
 //chercheur route
-//////////////////
 Route::get('chercheur', [ChercheurController::class, 'list'])
     ->name('chercheur');
 
-//////////////////
 //recruteur route
-//////////////////
 Route::get('recruteur', [RecruiterController::class, 'list'])
     ->name('recruteur');
 Route::get('/voir/{id}', [RecruiterController::class, 'voir'])->name('voir');
 
-
-////////////////////////////////
-////////////////////////////////
-////////////////////////////////
 //crud
 Route::get('/postuler/{id}', [RecruiterController::class, 'postuler'])->name('ajouter');
 Route::get('/edit/{id}', [RecruiterController::class, 'edit'])->name('edit');
@@ -45,5 +38,6 @@ Route::get('filter', [RecruiterController::class, 'filter'])->name('filter');
 
 //offre emploi
 Route::view('offre', 'offre-form');
-Route::post('enregistrer-offre/{recruteur_id}', [RecruiterController::class,'createOffre'])->name('enregistrer-offre');
+Route::post('enregistrer-offre/{recruteur_id}', [OfferController::class,'createOffre'])->name('enregistrer-offre');
+
 require __DIR__ . '/auth.php';
