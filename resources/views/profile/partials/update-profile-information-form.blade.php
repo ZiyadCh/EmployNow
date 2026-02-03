@@ -50,11 +50,16 @@
             <x-text-input id="pfp" name="pfp" type="file" class="mt-1 block w-full" :value="old('pfp', $user->pfp)" required />
             <x-input-error class="mt-2" :messages="$errors->get('pfp')" />
         </div>
+        @if(auth()->user()->role == 'chercheur')
+
         <div>
             <x-input-label for="speacialite" :value="__('Specialité')" />
             <x-text-input placeholder="Specialité" id="specialite" name="specialite" type="text" class="mt-1 block w-full" :value="old('specialite', $user->specialite)" required />
             <x-input-error class="mt-2" :messages="$errors->get('specialite')" />
         </div>
+        @endif
+
+
 
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>

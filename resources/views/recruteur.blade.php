@@ -6,7 +6,7 @@
             <div class="bg-white ">
                 <div class="p-6 text-gray-900">
                     <h2>rechercher</h2><br>
-<form action="{{ route('filter') }}" method="GET">
+        <form action="{{ route('filter') }}" method="GET">
         <label for="search-nom">nom:</label>
         <input class="border" type="text" name="search-nom" >
 
@@ -17,6 +17,16 @@
             filtrer
         </button>
     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white ">
+                <div class="p-6 text-gray-900">
+                    <label>Nouveu Offre</label>
+                    <a href="offre" class="inline-block rounded-md bg-blue-600 px-4 py-1.5 text-sm font-medium text-white hover:bg-blue-700 transition">+</a>
                 </div>
             </div>
         </div>

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class RecruiterController extends Controller
 {
     public function list(){
-        $employant = User::select('id','name','email','specialite')->where('role','chercheur')->where('specialite','!=',null)->get();
+        $employant = User::select('id','name','email','specialite')->where('role','chercheur')->get();
         return view('recruteur',['employant'=> $employant] );
     }
 
@@ -39,5 +39,8 @@ class RecruiterController extends Controller
     public function voir($id) {
          $employant = User::find($id);
         return view('profile-view', compact('employant'));
+    }
+    public function creeEmploi() {
+        # code...
     }
 }
