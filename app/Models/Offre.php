@@ -11,6 +11,7 @@ class Offre extends Model
         'titre',
         'type',
         'entreprise',
+        'description',
         'image',
     ];
 }
