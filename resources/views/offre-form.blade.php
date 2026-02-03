@@ -10,9 +10,8 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
-                    <form action="enregister-offre" method="POST" class="space-y-6">
+                    <form enctype="multipart/form-data" action="{{ route('enregistrer-offre', ['recruteur_id'=>auth()->user()->id]) }}" method="POST" class="space-y-6">
                         @csrf
-
                         <div>
                             <label for="">Entreprise</label>
                             <x-input-label for="entreprise"  />
@@ -24,8 +23,8 @@
                         </div>
 
                         <div>
-                            <x-input-label for="type_contrat" :value="__('Type de contrat')" />
-                            <select id="type_contrat" name="type_contrat" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+                            <x-input-label for="type" :value="__('Type de contrat')" />
+                            <select id="type_contrat" name="type" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
                                 <option value="CDI">CDI</option>
                                 <option value="CDD">CDD</option>
                                 <option value="Full-time">Full-time </option>
@@ -41,8 +40,8 @@
                         </div>
 
                         <div class="bg-gray-50 p-4 rounded-lg border-2 border-dashed border-gray-200">
-                            <x-input-label for="image_poste" :value="__('Image de l\'offre ')" />
-                            <input id="image_poste" name="image_poste" type="file" class=""
+                            <x-input-label for="image" :value="__('Image de l\'offre ')" />
+                            <input id="image" name="image" type="file" class=""
                                 required />
                         </div>
 

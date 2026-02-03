@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Offre;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -40,7 +41,14 @@ class RecruiterController extends Controller
          $employant = User::find($id);
         return view('profile-view', compact('employant'));
     }
-    public function creeOffre() {
-        # code...
+    public function createOffre(Request $r,$id) {
+        Offre::create([
+            'recruteur_id' => $id,
+            'titre' => $r->input('titre'),
+            'type' => $r->input('type'),
+            'entreprise' => $r->input('entreprise'),
+            'description' => $r->input('description'),
+            'image' => $r->input('image')
+        ]);
     }
 }
