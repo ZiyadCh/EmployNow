@@ -32,10 +32,6 @@
                                     Ajouter amis
                                 </a>
 
-
-
-
-
                             </div>
                         </td>
                     </tr>
@@ -43,5 +39,8 @@
                 </tbody>
             </table>
         </div>
+    </div>
+    <div class="flex justify-center">
+    <x-primary-button> <a href="liste-offre">Voir offres d'emploi</a></x-primary-button>
     </div>
 </x-app-layout>

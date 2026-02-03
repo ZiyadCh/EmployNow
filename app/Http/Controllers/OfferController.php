@@ -19,5 +19,13 @@ class OfferController extends Controller
             'description' => $r->input('description'),
             'image' => $imagePath
         ]);
-    }  //
+    }
+    public function showOffre() {
+        $offre = Offre::all();
+        return view('liste-offre',['offre'=> $offre] );
+    }
+    public function details($id) {
+        $offre = Offre::where('id',$id)->get();
+        return view('detail-offre', ['offer'=> $offre]);
+    }
 }

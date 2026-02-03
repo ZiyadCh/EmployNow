@@ -39,5 +39,7 @@ Route::get('filter', [RecruiterController::class, 'filter'])->name('filter');
 //offre emploi
 Route::view('offre', 'offre-form');
 Route::post('enregistrer-offre/{recruteur_id}', [OfferController::class,'createOffre'])->name('enregistrer-offre');
+Route::get('liste-offre', [OfferController::class,'showOffre'])->name('liste-offre');
+Route::get('detail-offre/{id}', [OfferController::class,'details'])->name('detail-offre');
 
 require __DIR__ . '/auth.php';
