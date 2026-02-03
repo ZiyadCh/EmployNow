@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
-                    <form action="" method="POST" class="space-y-6">
+                    <form action="enregister-offre" method="POST" class="space-y-6">
                         @csrf
 
                         <div>

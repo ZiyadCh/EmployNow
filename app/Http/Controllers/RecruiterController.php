@@ -40,7 +40,7 @@ class RecruiterController extends Controller
          $employant = User::find($id);
         return view('profile-view', compact('employant'));
     }
-    public function creeEmploi() {
+    public function creeOffre() {
         # code...
     }
 }
