@@ -43,6 +43,14 @@ class RecruiterController extends Controller
     }
     public function createOffre(Request $r,$id) {
 
+    $r->validate([
+        'titre'       => 'required|string|max:255',
+        'type'        => 'required|string|max:100',
+        'entreprise'  => 'required|string|max:255',
+        'description' => 'required|string',
+        'image'       => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
+    ]);
+
         $imagePath = $r->file('image')->store('offres', 'public');
 
         Offre::create([
