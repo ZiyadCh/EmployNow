@@ -14,4 +14,7 @@ class Offre extends Model
         'description',
         'image',
     ];
+    public function user() {
+        return $this->belongsToMany(User::class);
+    }
 }

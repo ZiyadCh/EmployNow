@@ -17,7 +17,7 @@ class User extends Authenticatable
     }
 
     public function offer() {
-        return $this->hasMany(Offre::class,'recruteur_id');
+        return $this->belongsToMany(Offre::class);
     }
 
     protected $fillable = [
