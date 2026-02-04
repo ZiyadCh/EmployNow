@@ -40,6 +40,6 @@ Route::view('offre', 'offre-form');
 Route::post('enregistrer-offre/{recruteur_id}', [OfferController::class,'createOffre'])->name('enregistrer-offre');
 Route::get('liste-offre', [OfferController::class,'showOffre'])->name('liste-offre');
 Route::get('detail-offre/{id}', [OfferController::class,'details'])->name('detail-offre');
-Route::get('postuler/{id}', [OfferController::class,'postuler'])->name('postuler');
+Route::get('postuler/{user_id}/{offre_id}', [OfferController::class,'postuler'])->name('postuler');
 
 require __DIR__ . '/auth.php';

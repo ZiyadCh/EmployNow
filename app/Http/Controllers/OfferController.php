@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Application;
 use App\Models\Offre;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,12 @@ class OfferController extends Controller
         $offre = Offre::where('id',$id)->get();
         return view('detail-offre', ['offer'=> $offre]);
     }
-    public function postuler($id) {
-        # code...
+    public function postuler($userId,$offreId) {
+
+        Application::firstOrCreate([
+            'user_id' => $userId,
+            'offre_id' => $offreId,
+            'status' => 'en attente',
+        ]);
     }
 }

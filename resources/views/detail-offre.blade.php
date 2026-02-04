@@ -51,7 +51,7 @@ More info: https://beyondco.de/blog/tailwind-jit-compiler-via-cdn
                                 <h3 class="font-extrabold">Type de Contract:</h3>
                             <p>{{$o->type}}</p>
                         </div>
-                            <x-primary-button> <a href="{{ route('postuler', ['id'=>$o->id]) }}">Postuler</a> </x-primary-button>
+                            <x-primary-button> <a href="{{ route('postuler', ['user_id' => auth()->user()->id ,'offre_id'=>$o->id]) }}">Postuler</a> </x-primary-button>
                     </div>
                 </div>
             </div>
