@@ -28,4 +28,7 @@ class OfferController extends Controller
         $offre = Offre::where('id',$id)->get();
         return view('detail-offre', ['offer'=> $offre]);
     }
+    public function postuler($id) {
+        # code...
+    }
 }
