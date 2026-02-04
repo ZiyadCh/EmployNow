@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
-                    <form enctype="multipart/form-data" action="{{ route('enregistrer-offre', ['recruteur_id'=>auth()->user()->id]) }}" method="POST" class="space-y-6">
+                    <form enctype="multipart/form-data" action="{{ route('enregistrer-offre') }}" method="POST" class="space-y-6">
                         @csrf
                         <div>
                             <label for="">Entreprise</label>

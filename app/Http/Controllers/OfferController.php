@@ -8,18 +8,24 @@ use Illuminate\Http\Request;
 
 class OfferController extends Controller
 {
-      public function createOffre(Request $r,$id) {
-
+      public function createOffre(Request $r) {
+         $r->validate([
+        'titre'       => 'required|string|max:255',
+        'type'        => 'required|string|max:100',
+        'entreprise'  => 'required|string|max:255',
+        'description' => 'required|string',
+        'image'       => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
+        ]);
         $imagePath = $r->file('image')->store('offres', 'public');
 
         Offre::create([
-            'recruteur_id' => $id,
             'titre' => $r->input('titre'),
             'type' => $r->input('type'),
             'entreprise' => $r->input('entreprise'),
             'description' => $r->input('description'),
             'image' => $imagePath
         ]);
+       redirect()->back();
     }
     public function showOffre() {
         $offre = Offre::all();
@@ -31,10 +37,11 @@ class OfferController extends Controller
     }
     public function postuler($userId,$offreId) {
 
-        Application::firstOrCreate([
+       Application::firstOrCreate([
             'user_id' => $userId,
             'offre_id' => $offreId,
             'status' => 'en attente',
         ]);
+        redirect()->back();
     }
 }

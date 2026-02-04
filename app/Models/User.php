@@ -16,7 +16,7 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class,'user_id');
     }
 
-    public function offer() {
+    public function offre() {
         return $this->belongsToMany(Offre::class);
     }
 

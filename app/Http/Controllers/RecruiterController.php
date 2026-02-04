@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Application;
 use App\Models\Offre;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -41,25 +42,9 @@ class RecruiterController extends Controller
          $employant = User::find($id);
         return view('profile-view', compact('employant'));
     }
-    public function createOffre(Request $r,$id) {
+    public function candidature(Type $var = null) {
+       $candidatures = Application::where('status','en attente');
+        return view('candidatures',['candidatures' => $candidatures]);
 
-    $r->validate([
-        'titre'       => 'required|string|max:255',
-        'type'        => 'required|string|max:100',
-        'entreprise'  => 'required|string|max:255',
-        'description' => 'required|string',
-        'image'       => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
-    ]);
-
-        $imagePath = $r->file('image')->store('offres', 'public');
-
-        Offre::create([
-            'recruteur_id' => $id,
-            'titre' => $r->input('titre'),
-            'type' => $r->input('type'),
-            'entreprise' => $r->input('entreprise'),
-            'description' => $r->input('description'),
-            'image' => $imagePath
-        ]);
     }
 }
