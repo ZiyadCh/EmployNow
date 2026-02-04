@@ -11,8 +11,13 @@ class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
+
     public function profile() {
         return $this->hasOne(Profile::class,'user_id');
+    }
+
+    public function offer() {
+        return $this->hasMany(Offre::class,'recruteur_id');
     }
 
     protected $fillable = [
