@@ -42,7 +42,7 @@ class RecruiterController extends Controller
          $employant = User::find($id);
         return view('profile-view', compact('employant'));
     }
-    public function candidature(Type $var = null) {
+    public function candidature() {
        $candidatures = Application::where('status','en attente');
         return view('candidatures',['candidatures' => $candidatures]);
 

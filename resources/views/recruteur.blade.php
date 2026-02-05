@@ -23,6 +23,7 @@
     </div>
     <div class="">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <x-primary-button><a href="consulter">Consulter candidatures</a></x-primary-button>
             <div class="bg-white ">
                 <div class="p-6 text-gray-900">
                     <label>Nouveu Offre</label>
