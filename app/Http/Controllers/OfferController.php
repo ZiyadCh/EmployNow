@@ -26,7 +26,7 @@ class OfferController extends Controller
             'description' => $r->input('description'),
             'image' => $imagePath
         ]);
-        redirect()->back();
+        return redirect()->back();
     }
     public function showOffre()
     {
@@ -46,6 +46,6 @@ class OfferController extends Controller
             'offre_id' => $offreId,
             'status' => 'en attente',
         ]);
-        redirect()->back();
+        return redirect()->back();
     }
 }

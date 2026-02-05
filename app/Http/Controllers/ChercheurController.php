@@ -14,8 +14,5 @@ class ChercheurController extends Controller
         return view('chercheur',['recruteur'=> $recruteur] );
     }
     //
-    public function demande($senderId,$receiverId){
-
-    }
 
 }
