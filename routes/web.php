@@ -43,4 +43,7 @@ Route::get('detail-offre/{id}', [OfferController::class, 'details'])->name('deta
 Route::get('postuler/{user_id}/{offre_id}', [OfferController::class, 'postuler'])->name('postuler');
 Route::get('candidature', [RecruiterController::class, 'candidature'])->name('candidature');
 
+//demande d'amis
+Route::get('amis/{senderId}/{receiverId}', [ChercheurController::class, 'demande'])->name('amis');
+
 require __DIR__ . '/auth.php';

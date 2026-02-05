@@ -8,8 +8,14 @@ use App\Models\User;
 
 class ChercheurController extends Controller
 {
+    //trouver des recruteurs
     public function list(){
-        $recruteur = User::select('name','email','role')->get();
+        $recruteur = User::select('id','name','email','role')->get();
         return view('chercheur',['recruteur'=> $recruteur] );
     }
+    //
+    public function demande($senderId,$receiverId){
+
+    }
+
 }
