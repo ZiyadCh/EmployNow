@@ -46,5 +46,6 @@ Route::get('candidature', [RecruiterController::class, 'candidature'])->name('ca
 
 //demande d'amis
 Route::get('amis/{senderId}/{receiverId}', [FriendController::class, 'demande'])->name('amis');
+Route::get('liste-amis/{id}', [FriendController::class, 'list'])->name('liste-amis');
 
 require __DIR__ . '/auth.php';
