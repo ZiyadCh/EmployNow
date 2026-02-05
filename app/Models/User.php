@@ -12,12 +12,19 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
-    public function profile() {
-        return $this->hasOne(Profile::class,'user_id');
+    public function profile()
+    {
+        return $this->hasOne(Profile::class, 'user_id');
     }
 
-    public function offre() {
-        return $this->belongsToMany(Offre::class);
+    public function offres()
+    {
+        return $this->belongsToMany(
+            Offre::class,
+            'applications',
+            'user_id',
+            'offre_id'
+        )->wherePivot('status');
     }
 
     protected $fillable = [

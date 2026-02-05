@@ -14,7 +14,13 @@ class Offre extends Model
         'description',
         'image',
     ];
-    public function user() {
-        return $this->belongsToMany(User::class);
+    public function users()
+    {
+        return $this->belongsToMany(
+            User::class,
+            'applications',
+            'offre_id',
+            'user_id'
+        )->withPivot('status');
     }
 }
