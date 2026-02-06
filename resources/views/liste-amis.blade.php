@@ -16,14 +16,14 @@
 
                     <div class="flex gap-2">
                         <button class="inline-flex rounded-md bg-black-600 px-3 py-1 text-xs font-semibold ">
-                                <a href="{{ route('accepter-ami', ['id'=> $a->id]) }}">
+                                <a href="{{ route('accepter-ami', ['sender'=> $d->sender]) }}">
                             Accepter
                                 </a>
                         </button>
 
                         <button
                             class="inline-flex rounded-md bg-red-600 px-3 py-1 text-xs font-semibold text-white hover:bg-red-700 transition">
-                                <a href="{{ route('refuser-ami', ['id'=> $a->id]) }}">
+                                <a href="{{ route('refuser-ami', ['sender'=> $d->sender]) }}">
                             Refuser
                                 </a>
                         </button>

@@ -7,8 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Friend extends Model
 {
     protected $fillable =[
-        'user1',
-        'user2',
+        'sender',
+        'receiver',
         'status'
     ];
+    public function receiver() {
+        return $this->belongsTo(User::class,'sender');
+    }
+    public function sender() {
+        return $this->belongsTo(User::class,'receiver');
+    }
 }

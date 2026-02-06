@@ -3,7 +3,11 @@
 <x-app-layout>
     <div class="py-8">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-
+<h1> <a href="{{ route('liste-amis', ['id'=>auth()->user()->id ]) }}"
+                        class="px-6 py-4 text-base font-semibold text-gray-800 inline-flex rounded-md bg-blue-700 px-4 py-1.5 font-bold text-white hover:bg-blue-700 transition">
+                        Votre Amis
+                    </a>
+                </h1>
             <div class="bg-white border border-gray-200 rounded-lg shadow-sm">
                 <div class="px-4 py-3 border-b border-gray-200">
                     <h2 class="text-sm font-semibold text-gray-800">Rechercher</h2>

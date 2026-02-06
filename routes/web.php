@@ -48,7 +48,8 @@ Route::get('candidature', [RecruiterController::class, 'candidature'])->name('ca
 Route::get('amis/{senderId}/{receiverId}', [FriendController::class, 'demande'])->name('amis');
 Route::get('liste-amis/{id}', [FriendController::class, 'list'])->name('liste-amis');
 //accepter refuser amis
-Route::get('accepter-amis/{id}', [FriendController::class, 'accepter'])->name('accepter-amis');
+Route::get('accepter-ami/{sender}', [FriendController::class, 'accepter'])->name('accepter-ami');
+Route::get('refuser-ami/{sender}', [FriendController::class, 'refuser'])->name('refuser-ami');
 
 
 require __DIR__ . '/auth.php';

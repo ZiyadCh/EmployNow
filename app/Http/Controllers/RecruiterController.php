@@ -43,6 +43,8 @@ class RecruiterController extends Controller
         return view('recruteur', ['employant' => $employant]);
     }
     //profile
+
+
     public function voir($id)
     {
         $employant = User::find($id);
