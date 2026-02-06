@@ -42,6 +42,11 @@ class RecruiterController extends Controller
         $employant = User::select('id', 'name', 'email', 'specialite')->where('role', 'chercheur')->where('name', 'Like', '%' . $request->input('search-nom') . '%')->where('specialite', 'Like', '%' . $request->input('search-specialite') . '%')->get();
         return view('recruteur', ['employant' => $employant]);
     }
+    public function filterOffre(Request $request)
+    {
+        $offre = Offre::select()->where('titre', 'Like', '%' . $request->input('search-titre') . '%')->get();
+        return view('liste-offre', ['offre' => $offre]);
+    }
     //profile
 
 

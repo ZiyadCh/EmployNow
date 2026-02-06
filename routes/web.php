@@ -51,5 +51,6 @@ Route::get('liste-amis/{id}', [FriendController::class, 'list'])->name('liste-am
 Route::get('accepter-ami/{sender}', [FriendController::class, 'accepter'])->name('accepter-ami');
 Route::get('refuser-ami/{sender}', [FriendController::class, 'refuser'])->name('refuser-ami');
 
+Route::get('filter-offre', [RecruiterController::class, 'filterOffre'])->name('filter-offre');
 
 require __DIR__ . '/auth.php';

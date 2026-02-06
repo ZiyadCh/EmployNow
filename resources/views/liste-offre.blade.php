@@ -9,6 +9,32 @@
                         Offres d’emploi
                     </h2>
                 </div>
+                <div class="px-4 py-3">
+                    <form action="{{ route('filter-offre') }}" method="GET"
+                          class="flex flex-col sm:flex-row gap-3 items-end">
+
+                        <div class="flex-1">
+                            <label for="search_titre" class="block text-xs font-medium text-gray-600">
+                                titre
+                            </label>
+                            <input
+                                id="search_titre"
+                                name="search-titre"
+                                type="text"
+                                value="{{ request('search-titre') }}"
+                                class="mt-1 w-full rounded-md border-gray-300 px-2 py-1 text-sm focus:border-blue-500 focus:ring-blue-500"
+                            >
+                        </div>
+
+
+
+                        <button type="submit"
+                                class="h-8 rounded-md bg-blue-600 px-4 text-sm font-semibold text-white hover:bg-blue-700 transition">
+                            Filtrer
+                        </button>
+                    </form>
+                </div>
+
 
                 <div class="overflow-x-auto px-4 py-4">
                     <table class="w-full border-separate border-spacing-y-3">
