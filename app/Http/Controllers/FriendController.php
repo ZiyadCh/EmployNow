@@ -33,12 +33,12 @@ class FriendController extends Controller
         return view('liste-amis', ['amis' => $amis,'demande' => $demande]);
     }
     public function accepter($id) {
-        Friend::where('sender',$id)
+        Friend::where('sender',$id)->where('receiver', auth()->user()->id)
         ->update(['status'=> 'accepté']);
         return redirect()->back();
     }
     public function refuser($id) {
-        Friend::where('sender',$id)
+        Friend::where('sender',$id)->where('receiver', auth()->user()->id)
         ->update(['status'=> 'refusé']);
         return redirect()->back();
     }

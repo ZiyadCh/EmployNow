@@ -10,7 +10,7 @@ class ChercheurController extends Controller
 {
     //trouver des recruteurs
     public function list(){
-        $recruteur = User::select('id','name','email','role')->get();
+        $recruteur = User::select('id','name','email','role')->whereNot('id',auth()->user()->id)->get();
         return view('chercheur',['recruteur'=> $recruteur] );
     }
     //
