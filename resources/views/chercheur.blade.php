@@ -58,6 +58,11 @@
                                         class="inline-flex rounded-md bg-blue-600 px-4 py-1.5 text-xs font-semibold text-white hover:bg-blue-700 transition">
                                         Ajouter ami
                                     </a>
+                                    <a href="{{ route('voir', ['id' => $e->id]) }}"
+                                        class="inline-flex rounded-md bg-blue-600 px-4 py-1.5 text-xs font-semibold text-white hover:bg-blue-700 transition">
+                                            Voir
+                                    </a>
+
                                 </td>
                             </tr>
                             @empty
